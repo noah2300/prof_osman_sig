@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prof. Osman M. Bakr - KAUST Email Signature</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #8B6F47 0%, #6B5537 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .header p {
+            font-size: 16px;
+            opacity: 0.95;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .signature-preview {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .signature-preview h2 {
+            color: #333;
+            font-size: 20px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .instructions {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+        
+        .instructions h3 {
+            color: #856404;
+            font-size: 18px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .instructions ol {
+            margin-left: 20px;
+            color: #856404;
+        }
+        
+        .instructions li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: #8B6F47;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #6B5537;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(139, 111, 71, 0.4);
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #5a6268;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(108, 117, 125, 0.4);
+        }
+        
+        .alert {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            display: none;
+        }
+        
+        .alert.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .footer {
+            background: #f8f9fa;
+            padding: 20px 40px;
+            text-align: center;
+            color: #6c757d;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .button-group {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📧 KAUST Email Signature</h1>
+            <p>Prof. Osman M. Bakr</p>
+        </div>
+        
+        <div class="content">
+            <div class="signature-preview">
+                <h2>Preview</h2>
+                <div id="signatureContainer"></div>
+            </div>
+            
+            <div class="instructions">
+                <h3>📋 How to Use This Signature</h3>
+                <ol>
+                    <li><strong>Copy the signature:</strong> Click the "Copy Signature" button below</li>
+                    <li><strong>Open your email client:</strong> Gmail, Outlook, or Apple Mail</li>
+                    <li><strong>Paste in signature settings:</strong>
+                        <ul style="margin-top: 8px;">
+                            <li><strong>Gmail:</strong> Settings → General → Signature → Paste (Ctrl+V / Cmd+V)</li>
+                            <li><strong>Outlook:</strong> File → Options → Mail → Signatures → Paste</li>
+                            <li><strong>Apple Mail:</strong> Preferences → Signatures → Paste</li>
+                        </ul>
+                    </li>
+                    <li><strong>Save:</strong> Make sure to save your signature settings</li>
+                </ol>
+            </div>
+            
+            <div class="button-group">
+                <button class="btn btn-primary" onclick="copySignature()">📋 Copy Signature</button>
+                <a href="signature.html" class="btn btn-secondary" target="_blank">👁️ View Full HTML</a>
+                <a href="https://github.com/noah2300/prof_osman_sig" class="btn btn-secondary" target="_blank">💻 GitHub Repo</a>
+            </div>
+            
+            <div class="alert" id="copyAlert">
+                ✅ Signature copied to clipboard! Now paste it into your email client's signature settings.
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Created for KAUST Office of the Vice President for Research</p>
+            <p style="margin-top: 5px; font-size: 12px;">© 2026 King Abdullah University of Science and Technology</p>
+        </div>
+    </div>
+    
+    <script>
+        fetch('signature.html')
+            .then(response => response.text())
+            .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const signatureTable = doc.querySelector('table');
+                document.getElementById('signatureContainer').appendChild(signatureTable);
+            });
+        
+        function copySignature() {
+            fetch('signature.html')
+                .then(response => response.text())
+                .then(html => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const signatureTable = doc.querySelector('table');
+                    
+                    const blob = new Blob([signatureTable.outerHTML], { type: 'text/html' });
+                    const clipboardItem = new ClipboardItem({
+                        'text/html': blob,
+                        'text/plain': new Blob([signatureTable.innerText], { type: 'text/plain' })
+                    });
+                    
+                    navigator.clipboard.write([clipboardItem]).then(() => {
+                        const alert = document.getElementById('copyAlert');
+                        alert.classList.add('show');
+                        setTimeout(() => {
+                            alert.classList.remove('show');
+                        }, 5000);
+                    });
+                })
+                .catch(err => {
+                    console.error('Copy failed:', err);
+                    alert('Failed to copy signature. Please try selecting and copying manually.');
+                });
+        }
+    </script>
+</body>
+</html>
