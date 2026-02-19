@@ -421,23 +421,43 @@
 
 <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js"></script>
 <script>
-(function () {
-    if (!window.QRCode) return;
+// Wait for QRCode library and DOM to be ready
+window.addEventListener('load', function() {
+    if (!window.QRCode) {
+        console.error('QRCode library not loaded');
+        return;
+    }
+    
     var vcfUrl = new URL('osman-bakr.vcf', window.location.href).toString();
+    console.log('Generating QR codes for:', vcfUrl);
+    
     ['qr1','qr2','qr3'].forEach(function (id) {
         var el = document.getElementById(id);
-        if (!el) return;
+        if (!el) {
+            console.warn('QR element not found:', id);
+            return;
+        }
+        
+        // Clear any existing content
+        el.innerHTML = '';
+        
         QRCode.toCanvas(vcfUrl, {
-            width: 74, margin: 1,
+            width: 74,
+            margin: 1,
             color: { dark: '#1f2937', light: '#ffffff' }
         }, function (err, canvas) {
-            if (err) { console.error(err); return; }
+            if (err) {
+                console.error('QR generation error for', id, ':', err);
+                return;
+            }
             canvas.style.width = '74px';
             canvas.style.height = '74px';
+            canvas.style.display = 'block';
             el.appendChild(canvas);
+            console.log('QR code generated for:', id);
         });
     });
-})();
+});
 
 function printVersion(id) {
     document.querySelectorAll('.version-section').forEach(function (s) { s.classList.remove('print-active'); });
