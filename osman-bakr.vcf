@@ -1,0 +1,14 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Osman M. Bakr
+N:Bakr;Osman;M.;;
+ORG:King Abdullah University of Science and Technology (KAUST)
+TITLE:Associate Vice President of Research
+TITLE:Chair, Ibn Rushd Program
+TITLE:Professor of Materials Science and Engineering
+TEL;TYPE=WORK,VOICE:+966128084439
+EMAIL;TYPE=INTERNET,WORK:osman.bakr@kaust.edu.sa
+ADR;TYPE=WORK:;;Building 5, Room 3274;Thuwal;;23955-6900;Saudi Arabia
+URL:http://www.kaust.edu.sa/academics/faculty/bakr.html
+NOTE:Executive Editor, ACS Materials Letters. Google Scholar: https://scholar.google.com/citations?user=7o1A7QQAAAAJ&hl=en
+END:VCARD
