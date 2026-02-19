@@ -1,454 +1,452 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Prof. Osman M. Bakr - Business Card</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prof. Osman M. Bakr — VP Business Cards</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --kaust-gold: #8B6F47;
-            --kaust-blue: #0066cc;
+            --gold: #8B6F47;
+            --gold-light: #c9a96e;
+            --gold-dark: #6B5537;
+            --blue: #0066cc;
+            --navy: #0f3460;
             --text: #1f2937;
             --muted: #6b7280;
+            --light: #f3f4f6;
             --border: #e5e7eb;
-            --bg: #0b1220;
+            --card-w: 3.5in;
+            --card-h: 2in;
+            --scale: 1.8;
         }
 
-        * { box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            margin: 0;
-            padding: 24px;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-            background: radial-gradient(1200px 800px at 20% 0%, #1f2a44 0%, var(--bg) 50%, #070b14 100%);
-            color: white;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            min-height: 100vh;
         }
 
+        /* ── Sticky Top Bar ── */
         .topbar {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 18px;
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(15,23,42,0.92);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+            padding: 14px 32px;
+            display: flex; align-items: center; justify-content: space-between;
+            flex-wrap: wrap; gap: 12px;
         }
-
-        .topbar h1 {
-            font-size: 18px;
-            margin: 0;
-            font-weight: 600;
-            letter-spacing: 0.2px;
-        }
-
-        .actions {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
+        .topbar h1 { font-size: 15px; font-weight: 700; letter-spacing: -0.01em; }
+        .topbar h1 em { font-style: normal; color: var(--gold-light); }
+        .actions { display: flex; gap: 8px; flex-wrap: wrap; }
         .btn {
-            appearance: none;
-            border: 1px solid rgba(255,255,255,0.16);
-            background: rgba(255,255,255,0.08);
-            color: white;
-            padding: 10px 12px;
-            border-radius: 10px;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            font-size: 13px;
+            appearance: none; border: 1px solid rgba(255,255,255,0.12);
+            background: rgba(255,255,255,0.06); color: #e2e8f0;
+            padding: 8px 16px; border-radius: 8px; font-size: 12px;
+            font-weight: 600; cursor: pointer; text-decoration: none;
+            transition: all .15s; font-family: inherit; display: inline-flex; align-items: center; gap: 6px;
+        }
+        .btn:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); }
+        .btn-gold { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); border-color: transparent; color: white; }
+        .btn-gold:hover { filter: brightness(1.1); }
+
+        /* ── Version Sections ── */
+        .version-section {
+            padding: 44px 32px 52px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .version-section:nth-child(even) { background: rgba(255,255,255,0.015); }
+        .version-header {
+            display: flex; align-items: flex-end; justify-content: space-between;
+            flex-wrap: wrap; gap: 16px; margin-bottom: 32px;
+        }
+        .version-header h2 { font-size: 24px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; }
+        .version-header h2 .num {
+            display: block; font-size: 11px; font-weight: 700;
+            letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 4px;
+        }
+        .version-header .desc { font-size: 13px; color: #64748b; margin-top: 4px; }
+
+        /* ── Cards Row ── */
+        .cards-row { display: flex; gap: 36px; flex-wrap: wrap; justify-content: center; }
+        .card-panel { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+        .panel-label {
+            font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+            text-transform: uppercase; color: #475569;
         }
 
-        .btn:hover { background: rgba(255,255,255,0.12); }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--kaust-gold), #6B5537);
-            border-color: rgba(255,255,255,0.0);
+        /* ── Card Frame (scaling wrapper) ── */
+        .card-frame {
+            width: calc(var(--card-w) * var(--scale));
+            height: calc(var(--card-h) * var(--scale));
+            position: relative; border-radius: 14px; overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.05);
         }
-
-        .btn-primary:hover { filter: brightness(1.05); }
-
-        .stage {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-            gap: 18px;
-            align-items: start;
-        }
-
-        .card-wrap {
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.12);
-            border-radius: 16px;
-            padding: 16px;
-            overflow: hidden;
-        }
-
-        .label {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            margin-bottom: 12px;
-            opacity: 0.95;
-        }
-
-        .label .title { font-size: 13px; font-weight: 700; letter-spacing: 0.3px; }
-        .label .meta { font-size: 12px; color: rgba(255,255,255,0.7); }
-
         .sheet {
-            width: 3.5in;
-            height: 2in;
-            background: white;
-            color: var(--text);
-            border-radius: 14px;
-            box-shadow: 0 18px 50px rgba(0,0,0,0.35);
-            overflow: hidden;
-            margin: 0 auto;
-            position: relative;
+            width: var(--card-w); height: var(--card-h);
+            transform: scale(var(--scale)); transform-origin: top left;
+            position: absolute; top: 0; left: 0;
+            background: white; color: var(--text); overflow: hidden;
+            font-family: 'Inter', sans-serif;
         }
 
-        .front {
-            padding: 24px 22px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
-            position: relative;
+        /* ══════════════════════════════════════════
+           V1 — CLASSIC GOLD
+           ══════════════════════════════════════════ */
+        .v1-front { display: flex; height: 100%; }
+        .v1-front .stripe { width: 6px; background: linear-gradient(180deg, var(--gold), var(--gold-dark)); flex-shrink: 0; }
+        .v1-front .content { flex: 1; padding: 14px 16px 13px; display: flex; flex-direction: column; justify-content: center; position: relative; }
+        .v1-front .logo-area { position: absolute; top: 12px; right: 12px; width: 50px; height: 50px; border: 1.5px solid rgba(139,111,71,0.25); border-radius: 10px; padding: 5px; }
+        .v1-front .logo-area img { width: 100%; height: 100%; object-fit: contain; display: block; }
+        .v1-front .name { font-size: 14.5px; font-weight: 800; color: var(--gold); line-height: 1.15; }
+        .v1-front .honors { font-size: 8.5px; color: var(--blue); font-weight: 600; letter-spacing: 0.3px; margin-bottom: 5px; }
+        .v1-front .titles { font-size: 7.5px; color: var(--muted); line-height: 1.45; margin-bottom: 7px; }
+        .v1-front .sep { width: 36px; height: 1px; background: var(--border); margin-bottom: 6px; }
+        .v1-front .org { font-size: 7.5px; font-weight: 700; color: var(--text); line-height: 1.25; }
+        .v1-front .addr { font-size: 7px; color: var(--muted); margin-top: 1px; margin-bottom: 5px; }
+        .v1-front .contact-grid { display: grid; gap: 1.5px; font-size: 7.5px; }
+        .v1-front .contact-grid .row { display: flex; align-items: center; gap: 4px; }
+        .v1-front .contact-grid .lbl { color: var(--gold); font-weight: 700; width: 10px; }
+        .v1-front .contact-grid a { color: var(--blue); text-decoration: none; }
+
+        .v1-back { height: 100%; position: relative; }
+        .v1-back::before { content:''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(139,111,71,0.06), rgba(0,102,204,0.03)); }
+        .v1-back .inner { position: relative; display: flex; width: 100%; height: 100%; padding: 14px 16px; align-items: center; gap: 12px; }
+        .v1-back .links { flex: 1; }
+        .v1-back .back-heading { font-size: 10px; font-weight: 800; color: var(--text); margin-bottom: 7px; }
+        .v1-back .link-item { margin-bottom: 4px; }
+        .v1-back .link-item .link-label { font-size: 6px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: var(--muted); }
+        .v1-back .link-item a { display: block; font-size: 7px; color: var(--blue); text-decoration: none; word-break: break-all; line-height: 1.3; }
+        .v1-back .qr-area { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+        .v1-back .qr-box { width: 78px; height: 78px; border: 1.5px solid var(--border); border-radius: 8px; display: grid; place-items: center; overflow: hidden; background: white; }
+        .v1-back .qr-text { font-size: 6.5px; color: var(--muted); font-weight: 600; text-align: center; line-height: 1.3; }
+        .v1-back .site { position: absolute; bottom: 8px; left: 16px; font-size: 7px; color: var(--gold); font-weight: 600; }
+
+        /* ══════════════════════════════════════════
+           V2 — EXECUTIVE DARK
+           ══════════════════════════════════════════ */
+        .v2-front {
+            background: linear-gradient(150deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: white; height: 100%; padding: 14px 16px 13px;
+            display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden;
         }
+        .v2-front::after { content:''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
+        .v2-front .logo-area { position: absolute; top: 11px; right: 13px; width: 44px; height: 44px; background: white; border-radius: 50%; padding: 6px; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+        .v2-front .logo-area img { width: 100%; height: 100%; object-fit: contain; display: block; }
+        .v2-front .name { font-size: 15px; font-weight: 800; color: var(--gold-light); line-height: 1.15; }
+        .v2-front .honors { font-size: 8px; color: rgba(255,255,255,0.55); font-weight: 500; letter-spacing: 0.5px; margin-bottom: 5px; }
+        .v2-front .titles { font-size: 7.5px; color: rgba(255,255,255,0.72); line-height: 1.45; margin-bottom: 8px; }
+        .v2-front .org { font-size: 7px; font-weight: 700; color: rgba(255,255,255,0.92); margin-bottom: 1px; }
+        .v2-front .addr { font-size: 6.5px; color: rgba(255,255,255,0.45); margin-bottom: 5px; }
+        .v2-front .contact-grid { display: grid; gap: 1.5px; font-size: 7px; }
+        .v2-front .contact-grid .row { display: flex; align-items: center; gap: 4px; }
+        .v2-front .contact-grid .lbl { color: var(--gold-light); font-weight: 700; width: 10px; }
+        .v2-front .contact-grid span { color: rgba(255,255,255,0.88); }
+        .v2-front .contact-grid a { color: #7cb8e8; text-decoration: none; }
 
-        .name {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--kaust-gold);
-            line-height: 1.2;
-            margin-bottom: 2px;
+        .v2-back {
+            background: linear-gradient(150deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: white; height: 100%; display: flex; align-items: center;
+            padding: 14px 16px; gap: 12px; position: relative; overflow: hidden;
         }
+        .v2-back::after { content:''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
+        .v2-back .links { flex: 1; position: relative; }
+        .v2-back .back-heading { font-size: 10px; font-weight: 800; color: var(--gold-light); margin-bottom: 7px; }
+        .v2-back .link-item { margin-bottom: 4px; }
+        .v2-back .link-item .link-label { font-size: 6px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: rgba(255,255,255,0.35); }
+        .v2-back .link-item a { display: block; font-size: 7px; color: #7cb8e8; text-decoration: none; word-break: break-all; line-height: 1.3; }
+        .v2-back .qr-area { display: flex; flex-direction: column; align-items: center; gap: 4px; position: relative; }
+        .v2-back .qr-box { width: 78px; height: 78px; border: 2px solid var(--gold-light); border-radius: 8px; display: grid; place-items: center; overflow: hidden; background: white; }
+        .v2-back .qr-text { font-size: 6.5px; color: rgba(255,255,255,0.45); font-weight: 600; text-align: center; line-height: 1.3; }
+        .v2-back .site { position: absolute; bottom: 8px; left: 16px; font-size: 7px; color: var(--gold-light); font-weight: 600; }
 
-        .suffix {
-            font-size: 11px;
-            color: var(--kaust-blue);
-            font-weight: 600;
-            display: block;
-            margin-top: 2px;
-            letter-spacing: 0.3px;
+        /* ══════════════════════════════════════════
+           V3 — MODERN BLUE CORPORATE
+           ══════════════════════════════════════════ */
+        .v3-front { height: 100%; display: flex; flex-direction: column; }
+        .v3-front .band {
+            height: 30px; background: linear-gradient(135deg, #003d7a, #0066cc);
+            display: flex; align-items: center; padding: 0 14px; gap: 8px; flex-shrink: 0;
         }
+        .v3-front .band img { width: 20px; height: 20px; object-fit: contain; border-radius: 3px; background: white; padding: 2px; }
+        .v3-front .band-text { font-size: 6.5px; color: rgba(255,255,255,0.88); font-weight: 600; letter-spacing: 0.3px; }
+        .v3-front .body { flex: 1; padding: 9px 14px 10px; display: flex; flex-direction: column; justify-content: center; }
+        .v3-front .name { font-size: 14px; font-weight: 800; color: #003d7a; line-height: 1.15; }
+        .v3-front .honors { font-size: 8px; color: var(--gold); font-weight: 600; letter-spacing: 0.3px; margin-bottom: 4px; }
+        .v3-front .titles { font-size: 7px; color: var(--muted); line-height: 1.45; margin-bottom: 6px; }
+        .v3-front .details { display: flex; gap: 12px; align-items: flex-end; }
+        .v3-front .details-left { flex: 1; }
+        .v3-front .org { font-size: 7px; font-weight: 700; color: var(--text); }
+        .v3-front .addr { font-size: 6.5px; color: var(--muted); margin-top: 1px; }
+        .v3-front .contact-grid { display: grid; gap: 1.5px; font-size: 7px; }
+        .v3-front .contact-grid .row { display: flex; align-items: center; gap: 4px; }
+        .v3-front .contact-grid .lbl { color: #003d7a; font-weight: 700; width: 10px; }
+        .v3-front .contact-grid a { color: var(--blue); text-decoration: none; }
 
-        .role {
-            margin-top: 8px;
-            font-size: 10px;
-            color: var(--muted);
-            line-height: 1.4;
-            font-weight: 500;
+        .v3-back { height: 100%; display: flex; flex-direction: column; }
+        .v3-back .band {
+            height: 30px; background: linear-gradient(135deg, #003d7a, #0066cc);
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
         }
+        .v3-back .band-text { font-size: 9px; color: white; font-weight: 700; letter-spacing: 0.5px; }
+        .v3-back .body { flex: 1; padding: 9px 16px 10px; display: flex; align-items: center; gap: 12px; }
+        .v3-back .links { flex: 1; }
+        .v3-back .link-item { margin-bottom: 4px; }
+        .v3-back .link-item .link-label { font-size: 6px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: var(--muted); }
+        .v3-back .link-item a { display: block; font-size: 7px; color: var(--blue); text-decoration: none; word-break: break-all; line-height: 1.3; }
+        .v3-back .qr-area { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+        .v3-back .qr-box { width: 78px; height: 78px; border: 2px solid #0066cc; border-radius: 8px; display: grid; place-items: center; overflow: hidden; background: white; }
+        .v3-back .qr-text { font-size: 6.5px; color: var(--muted); font-weight: 600; text-align: center; line-height: 1.3; }
 
-        .org {
-            margin-top: 12px;
-            font-size: 10.5px;
-            font-weight: 700;
-            color: var(--text);
-            line-height: 1.3;
-        }
-
-        .address {
-            margin-top: 3px;
-            font-size: 9.5px;
-            color: var(--muted);
-            line-height: 1.3;
-        }
-
-        .contact {
-            margin-top: 14px;
-            font-size: 10px;
-            line-height: 1.5;
-            color: var(--text);
-            display: grid;
-            gap: 4px;
-        }
-
-        .contact span.k { color: var(--muted); width: 16px; display: inline-block; font-weight: 600; }
-        .contact a { color: var(--kaust-blue); text-decoration: none; font-weight: 500; }
-
-        .logo {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 64px;
-            height: 64px;
-            border-radius: 12px;
-            background: white;
-            border: 2px solid rgba(139, 111, 71, 0.2);
-            padding: 8px;
-            display: grid;
-            place-items: center;
-        }
-
-        .logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            display: block;
-        }
-
-        .accent {
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 6px;
-            background: linear-gradient(180deg, var(--kaust-gold), #6B5537);
-        }
-
-        .back {
-            padding: 24px 22px;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 18px;
-            position: relative;
-        }
-
-        .back::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(139, 111, 71, 0.05), rgba(0, 102, 204, 0.03));
-            pointer-events: none;
-        }
-
-        .back > * { position: relative; }
-
-        .qr-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .qr {
-            width: 100px;
-            height: 100px;
-            background: white;
-            border: 2px solid var(--border);
-            border-radius: 12px;
-            display: grid;
-            place-items: center;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-
-        .qr canvas, .qr img { display: block; }
-
-        .qr-label {
-            font-size: 9.5px;
-            color: var(--muted);
-            line-height: 1.3;
-            text-align: center;
-            font-weight: 600;
-        }
-
-        .back-content {
-            flex: 1;
-        }
-
-        .back-title {
-            font-size: 13px;
-            font-weight: 800;
-            color: var(--text);
-            margin-bottom: 10px;
-            letter-spacing: 0.2px;
-        }
-
-        .back-links {
-            display: grid;
-            gap: 8px;
-            font-size: 9.5px;
-            line-height: 1.4;
-        }
-
-        .back-links > div {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
-
-        .back-links .label {
-            color: var(--muted);
-            font-weight: 600;
-            font-size: 8.5px;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-        }
-
-        .back-links a {
-            color: var(--kaust-blue);
-            text-decoration: none;
-            word-break: break-word;
-            font-weight: 500;
-        }
-
-        .divider {
-            height: 1px;
-            background: var(--border);
-            margin: 10px 0;
-        }
-
-        .print-note {
-            margin-top: 18px;
-            font-size: 12px;
-            color: rgba(255,255,255,0.75);
-            line-height: 1.5;
-        }
-
+        /* ── Print ── */
         @media print {
-            body {
-                background: white;
-                padding: 0;
-                color: black;
+            body { background: white !important; color: black !important; padding: 0.25in !important; }
+            .topbar, .version-header, .panel-label, .tip-bar { display: none !important; }
+            .version-section { display: none !important; padding: 0 !important; border: none !important; }
+            .version-section.print-active { display: block !important; }
+            .cards-row { justify-content: center; gap: 0.35in; }
+            .card-frame {
+                width: var(--card-w) !important; height: var(--card-h) !important;
+                box-shadow: none !important; border: 0.5pt solid #ccc !important; border-radius: 0 !important;
             }
-
-            .topbar, .print-note, .card-wrap .label, .card-wrap { display: none; }
-
-            .print-grid {
-                display: grid;
-                grid-template-columns: 1fr;
-                gap: 0;
-            }
-
-            .sheet {
-                box-shadow: none;
-                border-radius: 0;
-                margin: 0;
-            }
-
-            .sheet + .sheet { page-break-before: always; }
-        }
-
-        .print-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 18px;
+            .sheet { transform: none !important; border-radius: 0 !important; }
+            .card-panel { page-break-inside: avoid; }
         }
     </style>
 </head>
 <body>
-    <div class="topbar">
-        <h1>Business Card (print-ready) + scannable QR to save contact</h1>
-        <div class="actions">
-            <button class="btn btn-primary" type="button" onclick="window.print()">Print</button>
-            <a class="btn" href="osman-bakr.vcf" download>Download vCard (.vcf)</a>
-            <a class="btn" href="index.html">Back to Signature</a>
-        </div>
-    </div>
 
-    <div class="stage">
-        <div class="card-wrap">
-            <div class="label">
-                <div class="title">FRONT</div>
-                <div class="meta">3.5in × 2in</div>
-            </div>
-            <div class="sheet">
-                <div class="accent"></div>
-                <div class="front">
-                    <div class="logo">
-                        <img src="kaust-logo.png" alt="KAUST logo" />
+<!-- ── Top Bar ── -->
+<div class="topbar">
+    <h1><em>VP Business Cards</em> &mdash; Prof. Osman M. Bakr, FRSC, FIMMM</h1>
+    <div class="actions">
+        <a class="btn" href="osman-bakr.vcf" download>📇 Download vCard</a>
+        <a class="btn" href="index.html">← Signature Page</a>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     VERSION 1 — CLASSIC GOLD
+     ═══════════════════════════════════════════════ -->
+<section class="version-section" id="v1">
+    <div class="version-header">
+        <div>
+            <h2><span class="num">Version 01</span>Classic Gold</h2>
+            <div class="desc">Traditional elegance with KAUST gold accents — ideal for formal and academic settings</div>
+        </div>
+        <button class="btn btn-gold" onclick="printVersion('v1')">🖨️ Print This Version</button>
+    </div>
+    <div class="cards-row">
+        <div class="card-panel">
+            <div class="panel-label">Front</div>
+            <div class="card-frame"><div class="sheet v1-front">
+                <div class="stripe"></div>
+                <div class="content">
+                    <div class="logo-area"><img src="kaust-logo.png" alt="KAUST"></div>
+                    <div class="name">Osman M. Bakr</div>
+                    <div class="honors">FRSC, FIMMM</div>
+                    <div class="titles">Associate Vice President of Research<br>Chair, Ibn Rushd Program<br>Professor of Materials Science and Engineering</div>
+                    <div class="sep"></div>
+                    <div class="org">King Abdullah University of Science and Technology (KAUST)</div>
+                    <div class="addr">Building 5, Room 3274 · Thuwal 23955-6900 · Saudi Arabia</div>
+                    <div class="contact-grid">
+                        <div class="row"><span class="lbl">T</span> <span>+966 12 808 4439</span></div>
+                        <div class="row"><span class="lbl">E</span> <a href="mailto:osman.bakr@kaust.edu.sa">osman.bakr@kaust.edu.sa</a></div>
+                        <div class="row"><span class="lbl">W</span> <a href="https://www.kaust.edu.sa">www.kaust.edu.sa</a></div>
                     </div>
-                    
-                    <div>
-                        <div class="name">Osman M. Bakr</div>
-                        <div class="suffix">FRSC, FIMMM</div>
-                        <div class="role">
-                            Associate Vice President of Research<br />
-                            Chair, Ibn Rushd Program<br />
-                            Professor of Materials Science and Engineering
+                </div>
+            </div></div>
+        </div>
+        <div class="card-panel">
+            <div class="panel-label">Back</div>
+            <div class="card-frame"><div class="sheet v1-back">
+                <div class="inner">
+                    <div class="links">
+                        <div class="back-heading">Scan to save contact</div>
+                        <div class="link-item">
+                            <div class="link-label">Faculty Page</div>
+                            <a href="http://www.kaust.edu.sa/academics/faculty/bakr.html">kaust.edu.sa/academics/faculty/bakr.html</a>
+                        </div>
+                        <div class="link-item">
+                            <div class="link-label">Google Scholar</div>
+                            <a href="https://scholar.google.com/citations?user=7o1A7QQAAAAJ&hl=en">scholar.google.com/citations?user=7o1A7QQAAAAJ</a>
+                        </div>
+                        <div class="link-item">
+                            <div class="link-label">Executive Editor — ACS Materials Letters</div>
+                            <a href="https://pubs.acs.org/page/amlcef/editors.html">pubs.acs.org/page/amlcef/editors.html</a>
                         </div>
                     </div>
+                    <div class="qr-area">
+                        <div class="qr-box" id="qr1"></div>
+                        <div class="qr-text">Scan to add<br>to contacts</div>
+                    </div>
+                </div>
+                <div class="site">www.kaust.edu.sa</div>
+            </div></div>
+        </div>
+    </div>
+</section>
 
-                    <div>
-                        <div class="org">King Abdullah University of Science and Technology (KAUST)</div>
-                        <div class="address">Building 5, Room 3274 · Thuwal 23955-6900 · Saudi Arabia</div>
+<!-- ═══════════════════════════════════════════════
+     VERSION 2 — EXECUTIVE DARK
+     ═══════════════════════════════════════════════ -->
+<section class="version-section" id="v2">
+    <div class="version-header">
+        <div>
+            <h2><span class="num">Version 02</span>Executive Dark</h2>
+            <div class="desc">Premium dark navy with gold highlights — conveys authority and prestige</div>
+        </div>
+        <button class="btn btn-gold" onclick="printVersion('v2')">🖨️ Print This Version</button>
+    </div>
+    <div class="cards-row">
+        <div class="card-panel">
+            <div class="panel-label">Front</div>
+            <div class="card-frame"><div class="sheet v2-front">
+                <div class="logo-area"><img src="kaust-logo.png" alt="KAUST"></div>
+                <div class="name">Osman M. Bakr</div>
+                <div class="honors">FRSC, FIMMM</div>
+                <div class="titles">Associate Vice President of Research<br>Chair, Ibn Rushd Program<br>Professor of Materials Science and Engineering</div>
+                <div class="org">King Abdullah University of Science and Technology (KAUST)</div>
+                <div class="addr">Building 5, Room 3274 · Thuwal 23955-6900 · Saudi Arabia</div>
+                <div class="contact-grid">
+                    <div class="row"><span class="lbl">T</span> <span>+966 12 808 4439</span></div>
+                    <div class="row"><span class="lbl">E</span> <a href="mailto:osman.bakr@kaust.edu.sa">osman.bakr@kaust.edu.sa</a></div>
+                    <div class="row"><span class="lbl">W</span> <a href="https://www.kaust.edu.sa">www.kaust.edu.sa</a></div>
+                </div>
+            </div></div>
+        </div>
+        <div class="card-panel">
+            <div class="panel-label">Back</div>
+            <div class="card-frame"><div class="sheet v2-back">
+                <div class="links">
+                    <div class="back-heading">Scan to save contact</div>
+                    <div class="link-item">
+                        <div class="link-label">Faculty Page</div>
+                        <a href="http://www.kaust.edu.sa/academics/faculty/bakr.html">kaust.edu.sa/academics/faculty/bakr.html</a>
+                    </div>
+                    <div class="link-item">
+                        <div class="link-label">Google Scholar</div>
+                        <a href="https://scholar.google.com/citations?user=7o1A7QQAAAAJ&hl=en">scholar.google.com/citations?user=7o1A7QQAAAAJ</a>
+                    </div>
+                    <div class="link-item">
+                        <div class="link-label">Executive Editor — ACS Materials Letters</div>
+                        <a href="https://pubs.acs.org/page/amlcef/editors.html">pubs.acs.org/page/amlcef/editors.html</a>
+                    </div>
+                </div>
+                <div class="qr-area">
+                    <div class="qr-box" id="qr2"></div>
+                    <div class="qr-text">Scan to add<br>to contacts</div>
+                </div>
+                <div class="site">www.kaust.edu.sa</div>
+            </div></div>
+        </div>
+    </div>
+</section>
 
-                        <div class="contact">
-                            <div><span class="k">T</span> +966 12 808 4439</div>
-                            <div><span class="k">E</span> <a href="mailto:osman.bakr@kaust.edu.sa">osman.bakr@kaust.edu.sa</a></div>
-                            <div><span class="k">W</span> <a href="https://www.kaust.edu.sa">www.kaust.edu.sa</a></div>
+<!-- ═══════════════════════════════════════════════
+     VERSION 3 — MODERN BLUE CORPORATE
+     ═══════════════════════════════════════════════ -->
+<section class="version-section" id="v3">
+    <div class="version-header">
+        <div>
+            <h2><span class="num">Version 03</span>Modern Corporate Blue</h2>
+            <div class="desc">Clean corporate identity with KAUST blue branding — ideal for industry and partnership events</div>
+        </div>
+        <button class="btn btn-gold" onclick="printVersion('v3')">🖨️ Print This Version</button>
+    </div>
+    <div class="cards-row">
+        <div class="card-panel">
+            <div class="panel-label">Front</div>
+            <div class="card-frame"><div class="sheet v3-front">
+                <div class="band">
+                    <img src="kaust-logo.png" alt="KAUST">
+                    <span class="band-text">King Abdullah University of Science and Technology</span>
+                </div>
+                <div class="body">
+                    <div class="name">Osman M. Bakr</div>
+                    <div class="honors">FRSC, FIMMM</div>
+                    <div class="titles">Associate Vice President of Research<br>Chair, Ibn Rushd Program<br>Professor of Materials Science and Engineering</div>
+                    <div class="details">
+                        <div class="details-left">
+                            <div class="org">KAUST</div>
+                            <div class="addr">Building 5, Room 3274 · Thuwal 23955-6900 · Saudi Arabia</div>
+                        </div>
+                        <div class="contact-grid">
+                            <div class="row"><span class="lbl">T</span> <span>+966 12 808 4439</span></div>
+                            <div class="row"><span class="lbl">E</span> <a href="mailto:osman.bakr@kaust.edu.sa">osman.bakr@kaust.edu.sa</a></div>
+                            <div class="row"><span class="lbl">W</span> <a href="https://www.kaust.edu.sa">www.kaust.edu.sa</a></div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div></div>
         </div>
-
-        <div class="card-wrap">
-            <div class="label">
-                <div class="title">BACK</div>
-                <div class="meta">QR → vCard</div>
-            </div>
-            <div class="sheet">
-                <div class="back">
-                    <div class="back-content">
-                        <div class="back-title">Scan to save contact</div>
-                        <div class="back-links">
-                            <div>
-                                <div class="label">Faculty Page</div>
-                                <a href="http://www.kaust.edu.sa/academics/faculty/bakr.html">kaust.edu.sa/academics/faculty/bakr.html</a>
-                            </div>
-                            <div>
-                                <div class="label">Google Scholar</div>
-                                <a href="https://scholar.google.com/citations?user=7o1A7QQAAAAJ&hl=en">scholar.google.com/citations?user=7o1A7QQAAAAJ</a>
-                            </div>
-                            <div>
-                                <div class="label">ACS Materials Letters</div>
-                                <a href="https://pubs.acs.org/page/amlcef/editors.html">pubs.acs.org/page/amlcef/editors.html</a>
-                            </div>
+        <div class="card-panel">
+            <div class="panel-label">Back</div>
+            <div class="card-frame"><div class="sheet v3-back">
+                <div class="band"><span class="band-text">Scan to Save Contact</span></div>
+                <div class="body">
+                    <div class="links">
+                        <div class="link-item">
+                            <div class="link-label">Faculty Page</div>
+                            <a href="http://www.kaust.edu.sa/academics/faculty/bakr.html">kaust.edu.sa/academics/faculty/bakr.html</a>
+                        </div>
+                        <div class="link-item">
+                            <div class="link-label">Google Scholar</div>
+                            <a href="https://scholar.google.com/citations?user=7o1A7QQAAAAJ&hl=en">scholar.google.com/citations?user=7o1A7QQAAAAJ</a>
+                        </div>
+                        <div class="link-item">
+                            <div class="link-label">Executive Editor — ACS Materials Letters</div>
+                            <a href="https://pubs.acs.org/page/amlcef/editors.html">pubs.acs.org/page/amlcef/editors.html</a>
                         </div>
                     </div>
-
-                    <div class="qr-section">
-                        <div class="qr" id="qr"></div>
-                        <div class="qr-label">Scan to add<br>to contacts</div>
+                    <div class="qr-area">
+                        <div class="qr-box" id="qr3"></div>
+                        <div class="qr-text">Scan to add<br>to contacts</div>
                     </div>
                 </div>
-            </div>
+            </div></div>
         </div>
     </div>
+</section>
 
-    <div class="print-note">
-        Tip: print at 100% scale. The QR code points to <code>osman-bakr.vcf</code> hosted on this site.
-        If you prefer the QR to open a different link (e.g., Faculty page), tell me and I’ll switch it.
-    </div>
+<!-- Tip bar -->
+<div class="tip-bar" style="padding: 18px 32px; font-size: 12px; color: #64748b; line-height: 1.6; border-top: 1px solid rgba(255,255,255,0.04);">
+    <strong style="color: #94a3b8;">How to use:</strong> Click <em>Print This Version</em> on the version you like, then save as PDF or send to printer at <strong>100 % scale</strong>.
+    The QR codes link to the hosted vCard — scanning on any phone will prompt <em>"Add to Contacts"</em>.
+    Standard business card size: <strong>3.5 in × 2 in</strong> (89 mm × 51 mm).
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js"></script>
-    <script>
-        (function () {
-            const target = document.getElementById('qr');
-            if (!target || !window.QRCode) return;
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js"></script>
+<script>
+(function () {
+    if (!window.QRCode) return;
+    var vcfUrl = new URL('osman-bakr.vcf', window.location.href).toString();
+    ['qr1','qr2','qr3'].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        QRCode.toCanvas(vcfUrl, {
+            width: 74, margin: 1,
+            color: { dark: '#1f2937', light: '#ffffff' }
+        }, function (err, canvas) {
+            if (err) { console.error(err); return; }
+            canvas.style.width = '74px';
+            canvas.style.height = '74px';
+            el.appendChild(canvas);
+        });
+    });
+})();
 
-            const vcfUrl = new URL('osman-bakr.vcf', window.location.href).toString();
-
-            const qrSize = 96;
-            target.innerHTML = '';
-
-            QRCode.toCanvas(
-                vcfUrl,
-                {
-                    width: qrSize,
-                    margin: 1,
-                    color: {
-                        dark: '#1f2937',
-                        light: '#ffffff'
-                    }
-                },
-                function (err, canvas) {
-                    if (err) {
-                        console.error(err);
-                        return;
-                    }
-                    canvas.style.width = qrSize + 'px';
-                    canvas.style.height = qrSize + 'px';
-                    target.appendChild(canvas);
-                }
-            );
-        })();
-    </script>
+function printVersion(id) {
+    document.querySelectorAll('.version-section').forEach(function (s) { s.classList.remove('print-active'); });
+    var target = document.getElementById(id);
+    if (target) target.classList.add('print-active');
+    window.print();
+}
+</script>
 </body>
 </html>
