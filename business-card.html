@@ -209,6 +209,7 @@
             .topbar, .version-header, .panel-label, .tip-bar { display: none !important; }
             .version-section { display: none !important; padding: 0 !important; border: none !important; }
             .version-section.print-active { display: block !important; }
+            .version-section.print-active .card-panel { display: block !important; }
             .cards-row { justify-content: center; gap: 0.35in; }
             .card-frame {
                 width: var(--card-w) !important; height: var(--card-h) !important;
@@ -243,7 +244,6 @@
     </div>
     <div class="cards-row">
         <div class="card-panel">
-            <div class="panel-label">Front</div>
             <div class="card-frame"><div class="sheet v1-front">
                 <div class="stripe"></div>
                 <div class="content">
@@ -262,8 +262,8 @@
                 </div>
             </div></div>
         </div>
-        <div class="card-panel">
-            <div class="panel-label">Back</div>
+        <!-- Back card hidden in gallery, prints with front -->
+        <div class="card-panel" style="display: none;">
             <div class="card-frame"><div class="sheet v1-back">
                 <div class="inner">
                     <div class="links">
@@ -305,7 +305,6 @@
     </div>
     <div class="cards-row">
         <div class="card-panel">
-            <div class="panel-label">Front</div>
             <div class="card-frame"><div class="sheet v2-front">
                 <div class="logo-area"><img src="kaust-logo.png" alt="KAUST"></div>
                 <div class="name">Osman M. Bakr</div>
@@ -320,8 +319,8 @@
                 </div>
             </div></div>
         </div>
-        <div class="card-panel">
-            <div class="panel-label">Back</div>
+        <!-- Back card hidden in gallery, prints with front -->
+        <div class="card-panel" style="display: none;">
             <div class="card-frame"><div class="sheet v2-back">
                 <div class="links">
                     <div class="back-heading">Scan to save contact</div>
@@ -361,7 +360,6 @@
     </div>
     <div class="cards-row">
         <div class="card-panel">
-            <div class="panel-label">Front</div>
             <div class="card-frame"><div class="sheet v3-front">
                 <div class="band">
                     <img src="kaust-logo.png" alt="KAUST">
@@ -385,8 +383,8 @@
                 </div>
             </div></div>
         </div>
-        <div class="card-panel">
-            <div class="panel-label">Back</div>
+        <!-- Back card hidden in gallery, prints with front -->
+        <div class="card-panel" style="display: none;">
             <div class="card-frame"><div class="sheet v3-back">
                 <div class="band"><span class="band-text">Scan to Save Contact</span></div>
                 <div class="body">
